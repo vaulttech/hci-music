@@ -1,8 +1,42 @@
 #!/bin/bash
 
+# USAGE
+#
+# You have some options to call the start script. If you are using a guitar or
+# a joypad, you can just call the script using the following pattern (see the
+# Usage examples if you can't understand the pattern):
+#
+# >$ ./start <synthesis type> guitar
+#
+# If you do not have any guitar, you can call make this script use your
+# keyboard. To do so, use the following pattern:
+#
+# >$ ./start <synthesis type> keyboard <device number>
+#
+# The device number of your keyboard is probably 0, so you certainly should try
+# this if you don't know what this is about. If it doesn't work, oftenly trying
+# 1 (or 2, or 3, until 7, at maximum) should work fine for most cases.
+#
+# Synthesis Type variable can assume one of the following three values: "stk",
+# "midi" or "normal" (without quotes).
+#
+# Usage example:
+#
+# >$ ./start midi guitar
+#
+# >$ ./start stk keyboard 0
+
+
+# load midi related files
 midi_synth="midi_sender.ck midi_synth.ck"
+
+# load synth related files
 guitar_synth="guitar_synth.ck sub_synth.ck stk_synth.ck $midi_synth"
+
+# load guitar files
 guitar="$guitar_synth noise_pick.ck guitar.ck legato_guitar.ck picked_guitar.ck"
+
+# load the handler files
 input_handler="input_handler.ck guitar_handler.ck keyboard_handler.ck mouse_handler.ck"
 
 chuck $guitar $input_handler main.ck:$1:$2:$3
