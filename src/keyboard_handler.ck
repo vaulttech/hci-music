@@ -41,7 +41,6 @@ public class KeyboardHandler extends InputHandler {
 
             .1::second => now;
         }
-
     }
 
 }

@@ -1,9 +1,8 @@
 HUMAN COMPUTER INTERFACE MUSIC TOOLS
-(by Lucas Fialho)
 
 The project has some useful tools to anyone who wants to write musical code
 using Chuck and some "user friendly" interface (like a PlayStation2 joypad)
-that understands HIP (Human Interface Protocol).
+that understands HID Protocol.
 
 Anyone can collaborate \o/
 

@@ -39,22 +39,6 @@ public class Guitar {
         }
     }
 
-    public int getPitch(int i) {
-
-        // just need a proper mod function
-        int octave_offset;
-        if (offset < 0) {
-            -1 + (i+offset)/buttons.cap() => int octave_offset;
-            buttons.cap() + offset%buttons.cap() => offset;
-        } else {
-             (i+offset)/buttons.cap() => octave_offset;
-        }
-
-        (offset + i)%buttons.cap() => int noteIndex;
-
-        return base + (octave+octave_offset)*12 + buttons[noteIndex];
-    }
-
     public void bendNote(float f) {
         for (0=> int i; i < pressed.cap(); i++) {
             if (pressed[i]) {
@@ -76,8 +60,24 @@ public class Guitar {
         }
         noise.noteOn(1);
     }
-
+    
     public void octaveUp() { if (octave > 5) return; octave++; }
     public void octaveDown() { if (octave < 2) return; octave--; }
+
+    public int getPitch(int i) {
+
+        // just need a proper mod function
+        int octave_offset;
+        if (offset < 0) {
+            -1 + (i+offset)/buttons.cap() => int octave_offset;
+            buttons.cap() + offset%buttons.cap() => offset;
+        } else {
+             (i+offset)/buttons.cap() => octave_offset;
+        }
+
+        (offset + i)%buttons.cap() => int noteIndex;
+
+        return base + (octave+octave_offset)*12 + buttons[noteIndex];
+    }
 
 }
